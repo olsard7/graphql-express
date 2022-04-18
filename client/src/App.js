@@ -1,5 +1,7 @@
+import Dogs from "./Dogs";
+
 const App = () => {
-  return <p>App works</p>;
+  return <Dogs />;
 };
 
 export default App;

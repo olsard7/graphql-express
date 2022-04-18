@@ -10,7 +10,8 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  // uri: "http://localhost:5000/graphql",
+  uri: "https://71z1g.sse.codesandbox.io/",
   connectToDevTools: true,
   cache: new InMemoryCache(),
 });
@@ -27,17 +28,19 @@ const GET_IMAGES = gql`
   }
 `;
 
-client
-  .query({
-    query: GET_IMAGES,
-    // variables: { imageCategory: "Coffee" },
-  })
-  .then((result) => console.log(result))
-  .catch((err) => console.log(err));
+// client
+//   .query({
+//     query: GET_IMAGES,
+//     // variables: { imageCategory: "Coffee" },
+//   })
+//   .then((result) => console.log(result))
+//   .catch((err) => console.log(err));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>
 );
