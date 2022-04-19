@@ -17,27 +17,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const GET_IMAGES = gql`
-  query GetImagesByCategory($imageCategory: String) {
-    images(category: $imageCategory) {
-      id
-      title
-      owner
-      url
-      category
-    }
-  }
-`;
-
-const GET_BOOKS = gql`
-  {
-    books {
-      title
-      author
-    }
-  }
-`;
-
 const GET_DOGS = gql`
   {
     dogs {

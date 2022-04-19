@@ -11,9 +11,8 @@ const App = () => {
 
   return (
     <div>
-      {/* <DogPhoto breed={selectedDog} />
-      <Dogs onDogSelected={dogSelectedHandler} /> */}
-      <p>Test</p>
+      {/* <DogPhoto breed={selectedDog} /> */}
+      <Dogs onDogSelected={dogSelectedHandler} />
     </div>
   );
 };

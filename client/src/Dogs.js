@@ -3,7 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 const GET_DOGS = gql`
   {
     dogs {
-      id
+      uid
       breed
     }
   }
@@ -17,8 +17,8 @@ const Dogs = ({ onDogSelected }) => {
   return (
     <select onChange={onDogSelected}>
       <option value="">Select breed</option>
-      {data.dogs.slice(0, 20).map((dog) => (
-        <option value={dog.breed} key={dog.id}>
+      {data.dogs.map((dog) => (
+        <option value={dog.breed} key={dog.uid}>
           {dog.breed}
         </option>
       ))}
