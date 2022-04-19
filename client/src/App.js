@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Dogs from "./Dogs";
+import DogSelect from "./DogSelect";
 import DogPhoto from "./DogPhoto";
 
 const App = () => {
@@ -11,8 +11,8 @@ const App = () => {
 
   return (
     <div>
-      {/* <DogPhoto breed={selectedDog} /> */}
-      <Dogs onDogSelected={dogSelectedHandler} />
+      <DogPhoto breed={selectedDog} />
+      <DogSelect onDogSelected={dogSelectedHandler} />
     </div>
   );
 };

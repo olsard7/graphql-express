@@ -2,8 +2,8 @@ import { useQuery, gql } from "@apollo/client";
 
 const GET_DOG_PHOTO = gql`
   query dog($breed: String!) {
-    dog(breed: $breed) {
-      id
+    dogWithImg(breed: $breed) {
+      uid
       displayImage
     }
   }
@@ -11,23 +11,20 @@ const GET_DOG_PHOTO = gql`
 
 const DogPhoto = ({ breed }) => {
   console.log(breed);
-  const { loading, error, data, refetch, networkStatus } = useQuery(
-    GET_DOG_PHOTO,
-    {
-      variables: { breed },
-      notifyNetworkStatusChange: true,
-      //   pollInterval: 500
-    }
-  );
-  if (networkStatus === 4) return <p>Refetching!</p>;
+  const { loading, error, data } = useQuery(GET_DOG_PHOTO, {
+    variables: { breed },
+  });
   if (loading) return <p>Loading...</p>;
   if (error) return `Error! ${error}`;
   return (
     <div>
-      <div>
-        <img src={data.dog.displayImage} style={{ height: 100, width: 100 }} />
+      <div className="photoContainer">
+        {data.dogWithImg ? (
+          <img src={data.dogWithImg.displayImage} />
+        ) : (
+          <span>Please select a breed</span>
+        )}
       </div>
-      <button onClick={() => refetch()}>Refetch!</button>
     </div>
   );
 };
