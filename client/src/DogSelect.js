@@ -9,7 +9,7 @@ const GET_DOGS = gql`
   }
 `;
 
-const Dogs = ({ onDogSelected }) => {
+const DogSelect = ({ onDogSelected }) => {
   const { loading, error, data } = useQuery(GET_DOGS);
 
   if (loading) return "Loading...";
@@ -26,4 +26,4 @@ const Dogs = ({ onDogSelected }) => {
   );
 };
 
-export default Dogs;
+export default DogSelect;

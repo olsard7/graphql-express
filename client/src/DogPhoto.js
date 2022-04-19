@@ -10,7 +10,6 @@ const GET_DOG_PHOTO = gql`
 `;
 
 const DogPhoto = ({ breed }) => {
-  console.log(breed);
   const { loading, error, data } = useQuery(GET_DOG_PHOTO, {
     variables: { breed },
   });
