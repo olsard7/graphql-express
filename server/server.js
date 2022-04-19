@@ -18,12 +18,19 @@ const typeDefs = gql`
     breed: String
   }
 
+  type DogWithImg {
+    uid: ID
+    breed: String
+    displayImage: String
+  }
+
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     books: [Book]
     dogs: [Dog]
+    dogWithImg(breed: String): DogWithImg
   }
 `;
 
@@ -44,6 +51,13 @@ const resolvers = {
   Query: {
     books: () => books,
     dogs: () => dogsData,
+    dogWithImg: (parent, args, context, info) => {
+      console.log("--", args);
+      return dogsData.find((img) => {
+        console.log("== img==", img.breed === args.breed);
+        return img.breed === args.breed;
+      });
+    },
   },
 };
 
